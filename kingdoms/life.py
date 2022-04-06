@@ -18,6 +18,12 @@ class Monera(LivingThing):
         print("Dividing and creating", kid_name)
         return Monera(kid_name)
 
+class Animal(LivingThing):
+    def __init__(self, name):
+        super().__init__(name)
+
+    def locomote(self):
+        print(self.name, "moves")
 
 imp = LivingThing("Ted")
 imp.speak()
@@ -26,3 +32,7 @@ monte = Monera("Monte")
 monte.speak()
 child_1 = monte.divide()
 child_1.speak()
+
+sebastian = Animal("Sebastian")
+sebastian.speak()
+sebastian.locomote()
