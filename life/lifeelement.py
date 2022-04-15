@@ -24,4 +24,9 @@ class Life:
         if (self.is_living()):
             self.eat(foodAmt)
             self.metabolize()
+            return 0
+        else:
+            return self.foodAmount
+
+
 
