@@ -12,3 +12,17 @@ class Environment:
     
     def add_food(self, food):
         self.food += food
+
+    def distribute_food(self):
+        for elem in self.elements:
+           if self.food <= 0:
+               break
+            else:
+                if self.food < elem.food_requirement():
+                    elem.eat(self.food)
+                    food = 0
+                else:
+                    food_eaten = elem.food_requirement()
+                    elem.eat(food_eaten)
+                    food -= food_eaten
+        
