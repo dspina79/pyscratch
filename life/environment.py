@@ -15,7 +15,7 @@ class Environment:
 
     def distribute_food(self):
         for elem in self.elements:
-           if self.food <= 0:
+            if self.food <= 0:
                break
             else:
                 if self.food < elem.food_requirement():
@@ -24,5 +24,5 @@ class Environment:
                 else:
                     food_eaten = elem.food_requirement()
                     elem.eat(food_eaten)
-                    food -= food_eaten
+                    self.food -= food_eaten
         
