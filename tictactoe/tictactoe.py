@@ -1,8 +1,13 @@
 class Board:
     def __init__(self):
         super().__init__()
-        self.boardArray = ['', '', '', '', '', '', '', '', '']
-    
+        self.boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        self.gameWon = False
+
+    def reset(self):
+        self.boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        self.gameWon = False
+        
     def set_demo(self):
         for i in range(0, self.boardArray.__len__()):
             self.boardArray[i] = 'X'
@@ -14,10 +19,7 @@ class Board:
         print("_________")
         print(self.boardArray[6], "|", self.boardArray[7], "|", self.boardArray[8])
         
-    def determine_win(self):
-        return False
-    
-    def checkWin(self, player):
+    def check_win(self, player):
         # win opportunities
         w1 = (self.boardArray[0] == player and self.boardArray[1] == player and self.boardArray[2] == player)
         w2 = (self.boardArray[3] == player and self.boardArray[4] == player and self.boardArray[5] == player)
@@ -28,6 +30,33 @@ class Board:
         # diagonals
         w7 = (self.boardArray[0] == player and self.boardArray[4] == player and self.boardArray[8] == player)
         w8 = (self.boardArray[2] == player and self.boardArray[4] == player and self.boardArray[6] == player)
+        return w1 or w2 or w3 or w4 or w5 or w6 or w7 or w8
+
+    def enter_element(self, player, position):
+        self.boardArray[position] = player
+        self.print_board()
+        if self.check_win(player):
+            print("Plaer", player, "wins!!")
+            self.reset()
+            self.gameWon = True
+
+    def play_round(self):
+        players = ["X", "O"]
+        positionIndex = 0
+        while not self.gameWon:
+            player = players[positionIndex % 2]
+            pos = int(input("Player " + player + " enter position: "))
+            while pos < 0 or pos > 8 or self.boardArray[pos] != ' ':
+                print("Invalid choice")
+                pos = int(input("Player " + player + " enter position: "))
+                
+            self.enter_element(player, pos)
+            positionIndex += 1
+
+player1Element = "X"
+player2Element = "O"
 
 b = Board()
-b.print_board()
+
+b.play_round()
+
