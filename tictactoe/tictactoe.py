@@ -40,6 +40,18 @@ class Board:
             self.reset()
             self.gameWon = True
 
+    def determine_next_best_move(self):
+        # for now, just pick a random entry
+        if self.boardArray[4] == ' ':
+            return 4
+        else:
+            next_place = -1
+            for i in range(0, 8):
+                if self.boardArray[i] == ' ':
+                    next_place = i
+                    break
+            return next_place
+
     def play_round(self):
         players = ["X", "O"]
         positionIndex = 0
@@ -53,10 +65,5 @@ class Board:
             self.enter_element(player, pos)
             positionIndex += 1
 
-player1Element = "X"
-player2Element = "O"
-
 b = Board()
-
 b.play_round()
-
