@@ -26,6 +26,16 @@ class Mather:
     def get_hypotenuse(a, b):
         return float(((a * a) + (b * b))) ** (1/2)
 
+    @staticmethod
+    def worst_power(base, exp):
+        if exp < 0:
+            raise RuntimeError
+        val = 1
+        for i in range(0, exp):
+            val *= base
+        
+        return val
+
 x = 10
 y = 15
 z = 0
@@ -44,3 +54,11 @@ a = 6
 b = 8
 c = Mather.get_hypotenuse(a, b)
 print("The hypotenuse is", c)
+
+base = 2
+exp = 4
+print(Mather.worst_power(base, exp))
+
+base = 10
+exp = 5
+print(Mather.worst_power(base, exp))
