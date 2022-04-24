@@ -79,3 +79,5 @@ base = 10
 exp = 5
 print(Mather.worst_power(base, exp))
 
+for i in range(1, 30):
+    print ("Is", i, "prime? ", Mather.is_prime(i))
