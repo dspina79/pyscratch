@@ -27,6 +27,22 @@ class Mather:
         return float(((a * a) + (b * b))) ** (1/2)
 
     @staticmethod
+    def is_prime(n):
+        if n <= 1:
+            return False
+        elif n == 2:
+            return True
+        elif n % 2 == 0:
+            return False
+        else:
+            x = n - 1
+            while x > 1:
+                if n % x == 0:
+                    return False
+                x -= 1
+        return True
+
+    @staticmethod
     def worst_power(base, exp):
         if exp < 0:
             raise RuntimeError
@@ -62,3 +78,4 @@ print(Mather.worst_power(base, exp))
 base = 10
 exp = 5
 print(Mather.worst_power(base, exp))
+
