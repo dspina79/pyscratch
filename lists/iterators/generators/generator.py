@@ -24,10 +24,12 @@ def fibonacci():
         x = temp
 
 fibit = fibonacci()
-print(next(fibit))
-print(next(fibit))
-print(next(fibit))
-print(next(fibit))
-print(next(fibit))
-print(next(fibit))
+
+while True:
+    try:
+        print(next(fibit))
+    except StopIteration:
+        print('End of the line')
+        break
+
 
