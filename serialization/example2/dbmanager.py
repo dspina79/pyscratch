@@ -1,4 +1,4 @@
-import serialization.example2.accounts
+import accounts
 import pickle
 
 class DatabaseManager:
