@@ -12,6 +12,9 @@ class Account:
         self.lastname = lastName
         self.email = emailAddress
 
+    def write_out(self):
+        return self.lastname + ', ' + self.firstname
+
 class AccountManager:
     def __init__(self):
         super().__init__()
@@ -19,3 +22,8 @@ class AccountManager:
     
     def append(self, acct):
         self.accounts.append(acct)
+    
+    def write_summary(self):
+        print('Contains ', self.accounts.__len__(), ' records:')
+        for acct in self.accounts:
+            print('\t', acct.write_out())

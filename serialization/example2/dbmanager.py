@@ -11,7 +11,7 @@ class DatabaseManager:
         f = open(self.path, 'rb')
         self.manager = pickle.load(f)
         f.close()
-        return manager
+        return self.manager
     
     def write_data(self):
         if self.manager != None:
@@ -24,6 +24,13 @@ dmgr = DatabaseManager('serialization/example2/maindata.txt')
 acctmgr = dmgr.manager
 acct1 = a.Account('Dean', 'Williams', 'dwilliams@nowhere.net', 53)
 acct2 = a.Account('Sharon', 'Folsom', 'sforlsm@nowhere.net', 23)
+acct3 = a.Account('Ted', 'Quinn', 'tquinn@nowhere.net', 32)
 acctmgr.append(acct1)
 acctmgr.append(acct2)
-dmgr.write_data()        
+dmgr.write_data()
+
+acctmgr.append(acct3)
+acctmgr.write_summary()
+
+acctmgr = dmgr.refresh_data()
+acctmgr.write_summary()
