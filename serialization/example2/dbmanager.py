@@ -5,12 +5,21 @@ class DatabaseManager:
     def __init__(self, dbpath):
         super().__init__()
         self.path = dbpath
-        self.manager = a.AccountManager()
+        self.refresh_data()
+        
+    def quick_add(self, acct):
+        self.manager.append(acct)
+        self.write_data()
+        self.refresh_data()
 
     def refresh_data(self):
-        f = open(self.path, 'rb')
-        self.manager = pickle.load(f)
-        f.close()
+        try:
+            f = open(self.path, 'rb')
+            self.manager = pickle.load(f)
+            f.close()
+        except FileNotFoundError:
+            self.manager = a.AccountManager()
+
         return self.manager
     
     def write_data(self):
