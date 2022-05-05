@@ -6,7 +6,7 @@ class DatabaseManager:
         super().__init__()
         self.path = dbpath
         self.refresh_data()
-        
+
     def quick_add(self, acct):
         self.manager.append(acct)
         self.write_data()
