@@ -42,6 +42,9 @@ class AccountManager:
         
         return index
 
+    def remove(self, index):
+        self.accounts.pop(index)
+
     def append(self, acct):
         self.accounts.append(acct)
     
