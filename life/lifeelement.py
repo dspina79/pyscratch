@@ -38,4 +38,3 @@ class Life:
             return self.foodAmount
 
 
-
