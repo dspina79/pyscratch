@@ -1,7 +1,7 @@
 import random as r
 
-LOWER_BOUND = -1000
-UPPER_BOUND = 1000
+LOWER_BOUND = -10
+UPPER_BOUND = 10
 
 iteration = 0
 items = []
