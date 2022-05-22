@@ -14,6 +14,12 @@ def get_todo(id):
     data = resp.json()
     print(data['title'])
 
+def get_all():
+    url = "https://jsonplaceholder.typicode.com/todos/"
+    resp = requests.get(url)
+    data = resp.json()
+    print("Returned", data.__len__(), "records")
+
 def make_todo(userid, title, completed):
     body = {"userId": userid, "title": title, "completed": completed}
     url = "https://jsonplaceholder.typicode.com/todos"
@@ -21,6 +27,8 @@ def make_todo(userid, title, completed):
     data = resp.json()
     return data["id"]
 
-get_todo(2)
-result = make_todo(1, "Another Test", False)
-print(result)
+# get_todo(2)
+# result = make_todo(1, "Another Test", False)
+# print(result)
+
+get_all()
