@@ -29,6 +29,12 @@ class UserManager:
         u.emailAddres = data["email"]
         return u
 
+    def get_all_users(self):
+        url = self.baseUrl
+        resp = requests.get(url)
+        data = resp.json()
+        return data
+        
 mgr = UserManager()
 mgr.get_user(1).printout()
 mgr.get_user(2).printout()
