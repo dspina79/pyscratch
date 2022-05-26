@@ -15,6 +15,31 @@ class User:
     def printout(self):
         print(self.name, "(", self.emailAddres, ")")
 
+    def to_json(self):
+        # TODO: Implement
+        return {
+                "name": self.name,
+                "username": self.username,
+                "email": self.emailAddres,
+                "address": {
+                    "street": self.address1,
+                    "suite": "",
+                    "city": self.city,
+                    "zipcode": self.postalCode,
+                    "geo": {
+                        "lat": "",
+                        "lng": ""
+                    }
+                },
+                "phone": "",
+                "website": "",
+                "company": {
+                    "name": "",
+                    "catchPhrase": "",
+                    "bs": ""
+                }
+            }
+    
 
 class UserManager:
     def __init__(self):
@@ -34,6 +59,10 @@ class UserManager:
         resp = requests.get(url)
         data = resp.json()
         return data
+
+    def create_user(self, usr):
+        resp = requests.post(self.baseUrl, json = usr.to_json())
+        return resp.json()
         
 mgr = UserManager()
 mgr.get_user(1).printout()
