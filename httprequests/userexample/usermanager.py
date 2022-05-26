@@ -63,7 +63,15 @@ class UserManager:
     def create_user(self, usr):
         resp = requests.post(self.baseUrl, json = usr.to_json())
         return resp.json()
-        
+
 mgr = UserManager()
 mgr.get_user(1).printout()
 mgr.get_user(2).printout()
+
+u = User("Dean Smith", "dsmith")
+u.address1 = "123 Anywhere Drive"
+u.city = "Anywhere"
+u.state = "TX"
+u.postalCode = "12345"
+u.emailAddres = "dsmith@nowhere.net"
+print(mgr.create_user(u))
