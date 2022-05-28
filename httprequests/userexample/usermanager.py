@@ -1,5 +1,13 @@
 import pip._vendor.requests as requests
 
+class Address:
+    def __init__(self, street = "", city = "", state = "", postal = ""):
+        self.street = street
+        self.city = city
+        self.stateProvince = state
+        self.postalCode = postal
+
+
 class User:
     def __init__(self, name, username):
         super().__init__()
@@ -7,10 +15,7 @@ class User:
         self.name = name
         self.id = None
         self.emailAddres = ""
-        self.address1 = ""
-        self.city = ""
-        self.state = ""
-        self.postalCode = ""
+        self.address = Address()
 
     def printout(self):
         print(self.name, "(", self.emailAddres, ")")
@@ -22,10 +27,10 @@ class User:
                 "username": self.username,
                 "email": self.emailAddres,
                 "address": {
-                    "street": self.address1,
+                    "street": self.address.street,
                     "suite": "",
-                    "city": self.city,
-                    "zipcode": self.postalCode,
+                    "city": self.address.city,
+                    "zipcode": self.address.postalCode,
                     "geo": {
                         "lat": "",
                         "lng": ""
@@ -69,9 +74,6 @@ mgr.get_user(1).printout()
 mgr.get_user(2).printout()
 
 u = User("Dean Smith", "dsmith")
-u.address1 = "123 Anywhere Drive"
-u.city = "Anywhere"
-u.state = "TX"
-u.postalCode = "12345"
+u.address = Address("123 Anywhere Drive", "Anywhere", "TX", "12345")
 u.emailAddres = "dsmith@nowhere.net"
 print(mgr.create_user(u))
