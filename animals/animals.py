@@ -5,13 +5,19 @@ class Person:
         self.rank = 0
 
     def __str__(self):
-        return 'Person Name: ' + self.name
-
+        if self.name != None:
+            return 'Person Name: ' + self.name
+        else:
+            return "Uninit"
+            
     def __eq__(self, value):
         return self.name == value.name and self.rank == value.rank
     
     def __gt__(self, value):
         return self.rank < value.rank
+
+    def __getattribute__(self, item):
+        print(item)
 
 p1 = Person('Dean')
 p1.rank = 5
@@ -26,4 +32,4 @@ print(p1)
 print("Is P1 = P2?", p1 == p2)
 print("Is P1 > P3?", p1 > p3)
 
-
+print(p1.name)
