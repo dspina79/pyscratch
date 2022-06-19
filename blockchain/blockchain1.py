@@ -19,12 +19,22 @@ class Blockchain:
         self.unconfirmed_transactions = []
         self.chain = []
         self.create_genesis_block()
+        self.difficulty = 2
 
     def create_genesis_block(self):
-        genesis_block = Block(0, [], t.time(), "0")
+        genesis_block = Block(0, [], t.time(), 0)
         genesis_block.hash = genesis_block.compute_hash()
         self.chain.append(genesis_block)
+
+    def proof_of_work(self, block):
+        computed_hash = block.compute_hash()
+        while not computed_hash.startswith('0' * self.difficulty):
+            block.nonce += 1
+            computed_hash = block.compute_hash()
+        return computed_hash
 
     @property
     def last_block(self):
         return self.chain[-1]
+
+    
