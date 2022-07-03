@@ -14,7 +14,7 @@ class MyProcess(multiprocessing.Process):
 if __name__ == '__main__':
     p1 = MyProcess(1)
     p1.start()
-
-    p2 = MyProcess(2)
+    p1.join()
+    p2 = MyProcess(5)
     p2.start()
-
+    p2.join() # makes it synchronous
