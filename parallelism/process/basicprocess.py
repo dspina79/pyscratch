@@ -18,3 +18,8 @@ if __name__ == '__main__':
     p2 = MyProcess(5)
     p2.start()
     p2.join() # makes it synchronous
+
+    p3 = MyProcess(3)
+    p4 = MyProcess(3)
+    p3.start()
+    p4.start()
