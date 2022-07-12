@@ -20,4 +20,8 @@ def phrase_match(phrase):
             found = True
 
 
-phrase_match('to be')
+phrase_match('to be') # took 9,592,920 iterations on first
+
+# to be or not to be (n=18) would have a possible value of 5.8 x 10^25
+# or 58,000,000,000,000,000,000,000,000
+# 58 septillion?
